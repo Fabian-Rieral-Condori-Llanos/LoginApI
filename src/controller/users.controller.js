@@ -1,6 +1,9 @@
-import { Usuario } from "../models/users.js";
+import Usuario from "../models/users.js";
 import bcrypt from 'bcrypt';
 import jwt from 'jsonwebtoken';
+import dotenv from "dotenv";
+
+dotenv.config();
 
 const crearUsuario = async (req, res) => {
     const { nombre, correo, contrasena } = req.body;
@@ -31,7 +34,7 @@ const crearUsuario = async (req, res) => {
   
   const iniciarSesion = async (req, res) => {
     const { correo, contrasena } = req.body;
-  
+    const SECRET_KEY = process.env.SECRET_KEY;
     try {
      
       const usuario = await Usuario.findOne({ where: { correo } });

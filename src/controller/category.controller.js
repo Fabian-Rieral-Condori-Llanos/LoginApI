@@ -1,4 +1,4 @@
-import Categoria from "../models/category";
+import Categoria from "../models/category.js";
 
 const crearCategoria = async (req, res) => {
     const { nombre, usuario_id } = req.body;
